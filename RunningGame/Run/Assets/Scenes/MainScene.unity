@@ -1860,7 +1860,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.83, y: 0.98}
+  m_Size: {x: 0.83, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1884445029
 GameObject:
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 7
   jumpAction: {fileID: -329820918787624113, guid: 700bad60d5c34b44ea6e9c40dce45243, type: 3}
-  duckAction: {fileID: 0}
+  duckAction: {fileID: -7696066149820123024, guid: 700bad60d5c34b44ea6e9c40dce45243, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
