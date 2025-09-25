@@ -27,4 +27,15 @@ public class PLAnimController : MonoBehaviour
     {
         animator.SetBool("Run", false);
     }
+
+    public void PlayJump()
+    {
+        animator.SetTrigger("Jump");
+    }
+
+    // 불리언 파라미터로 숙이기 애니메이션 제어
+    public void PlayDuck(bool isDucking)
+    {
+        animator.SetBool("Duck", isDucking);
+    }
 }
