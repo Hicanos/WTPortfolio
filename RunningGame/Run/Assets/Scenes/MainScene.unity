@@ -482,6 +482,7 @@ MonoBehaviour:
   groundTile: {fileID: 11400000, guid: e55c16d17ab09ca4c9711dcb371d6410, type: 2}
   player: {fileID: 677622822}
   extendBuffer: 10
+  removeBuffer: 20
   groundY: -5
 --- !u!1 &232077024
 GameObject:
