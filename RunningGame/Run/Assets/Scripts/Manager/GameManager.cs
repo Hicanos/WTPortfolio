@@ -3,8 +3,8 @@
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public int score;
-    [SerializeField] private int highScore;
+    public int score; //현재 점수   
+    public int highScore; //최고 점수
     [SerializeField] private Player player;
 
     private void Awake()
