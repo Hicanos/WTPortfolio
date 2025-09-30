@@ -40,7 +40,7 @@
                     "name": "",
                     "id": "ca147069-f56d-4207-b2cb-7ed51c1c9163",
                     "path": "<Keyboard>/downArrow",
-                    "interactions": "Hold(duration=0.1,pressPoint=0.2)",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.1)",
                     "processors": "",
                     "groups": ";PC",
                     "action": "Duck",

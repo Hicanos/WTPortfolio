@@ -22,9 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //UI 활성화, UI 버튼을 눌러야 StartGame 실행
-        //현재는 바로 게임시작
-        StartGame();
+        
     }
 
     // Update is called once per frame

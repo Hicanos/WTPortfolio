@@ -38,4 +38,16 @@ public class PLAnimController : MonoBehaviour
     {
         animator.SetBool("Duck", isDucking);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //부딪힌 것이 장애물인 경우, HP 감소
+        //3회 부딪히면 게임 오버
+
+        if (collision.CompareTag("Enemy"))
+        {
+            Debug.Log("Hp감소");
+            // HP가 0이면 GameManager에서 게임오버 호출
+        }
+    }
 }
