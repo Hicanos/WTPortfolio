@@ -13,6 +13,12 @@ public class PLAnimController : MonoBehaviour
         }
     }
 
+    public void PlayIdleAnim()
+    {
+        animator.SetBool("Run", false);
+        animator.SetBool("Duck", false);
+    }
+
     public void PlayRunAnim()
     {
         animator.SetBool("Run", true);

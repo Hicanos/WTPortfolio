@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public int score; //현재 점수   
     public int highScore; //최고 점수
     [SerializeField] private Player player;
+    [SerializeField] private BGController bGController;
 
     private void Awake()
     {
@@ -39,7 +40,16 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //PlayerPrefs로 가장 높은 점수 저장
-        
         PlayerPrefs.SetInt("HighScore", Mathf.Max(score, PlayerPrefs.GetInt("HighScore", 0)));
+
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        score = 0;
+        player.ResetPosition();
+        UIManager.uiManager.SetRestartBtn();
+        bGController.ResetPosition();
     }
 }
