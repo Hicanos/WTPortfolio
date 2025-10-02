@@ -4,6 +4,10 @@ public class PLAnimController : MonoBehaviour
 {
     [SerializeField] Animator animator; // 애니메이터 컴포넌트
 
+    // Player HP 관련 변수
+    private int maxHealth = 3; // Maximum health
+    [SerializeField] private int currentHealth; // Current health
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,12 +15,14 @@ public class PLAnimController : MonoBehaviour
         {
             animator = GetComponent<Animator>();
         }
+        currentHealth = maxHealth; // Initialize current health to maximum health
     }
 
     public void PlayIdleAnim()
     {
         animator.SetBool("Run", false);
         animator.SetBool("Duck", false);
+        currentHealth = maxHealth;
     }
 
     public void PlayRunAnim()
@@ -24,7 +30,7 @@ public class PLAnimController : MonoBehaviour
         animator.SetBool("Run", true);
     }
 
-    public void PlayHit()
+    private void PlayHit()
     {
         animator.SetTrigger("Hit");
     }
@@ -52,8 +58,15 @@ public class PLAnimController : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
+            PlayHit();
+            currentHealth--;
+            UIManager.uiManager.UpdateHearts(currentHealth);
             Debug.Log("Hp감소");
-            // HP가 0이면 GameManager에서 게임오버 호출
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Game Over");
+                GameManager.Instance.GameOver();
+            }
         }
     }
 }

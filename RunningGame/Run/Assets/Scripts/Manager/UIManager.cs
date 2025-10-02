@@ -48,4 +48,25 @@ public class UIManager : MonoBehaviour
         // 점수는 000000 형식으로 표시 (60일경우 000060)
         scoreText.text = gameManager.score.ToString("D6");
     }
+
+    public void UpdateHearts(int health)
+    {
+        // 하트는 3개, health가 2면 2개만 보이게
+        // health가 0이 되면 게임 오버
+        // hearts는 0,1,2 인덱스
+        // helath는 0,1,2,3 값
+        // UpdateHearts(2) -> hearts[0], hearts[1] 활성화, hearts[2] 비활성화
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].SetActive(true);
+            }
+            else
+            {
+                hearts[i].SetActive(false);
+            }
+        }
+    }
 }
