@@ -5,9 +5,12 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] hearts;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text highScoreText;
     [SerializeField] private GameManager gameManager;
+
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject resetBtn;
+    [SerializeField] private GameObject highScoreObj;
 
     public static UIManager uiManager;
 
@@ -47,6 +50,19 @@ public class UIManager : MonoBehaviour
     {
         // 점수는 000000 형식으로 표시 (60일경우 000060)
         scoreText.text = gameManager.score.ToString("D6");
+    }
+
+    public void UpdateHighScore()
+    {
+        if(gameManager.highScore == 0)
+        {
+            highScoreObj.SetActive(false);
+        }
+        else
+        {
+            highScoreObj.SetActive(true);
+        }
+        highScoreText.text = gameManager.highScore.ToString("D6");
     }
 
     public void UpdateHearts(int health)

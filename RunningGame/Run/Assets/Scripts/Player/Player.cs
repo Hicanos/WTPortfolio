@@ -9,17 +9,41 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject PlayerPos; // 플레이어 위치 참조 오브젝트
     private bool isMoving = false;
 
+    private float distanceTraveled = 0f; // 누적 이동 거리
+    private int lastScoreDistance = 0;   // 마지막으로 점수를 올린 거리(정수)
+    private float speedIncreaseInterval = 10f; // 속도 증가 간격(거리)
+    private float speedIncreaseAmount = 0.5f;  // 속도 증가량
+
     public void SetGameStart()
     {
         isMoving = true;
         animController.PlayRunAnim();
+        distanceTraveled = 0f;
+        lastScoreDistance = 0;
+        speed = 7f;
     }
 
     private void Update()
     {
         if (isMoving)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            float moveDelta = speed * Time.deltaTime;
+            transform.Translate(Vector3.right * moveDelta);
+            distanceTraveled += moveDelta;
+
+            int currentDistanceInt = Mathf.FloorToInt(distanceTraveled);
+            if (currentDistanceInt > lastScoreDistance)
+            {
+                int addScore = currentDistanceInt - lastScoreDistance;
+                GameManager.Instance.AddScore(addScore);
+                lastScoreDistance = currentDistanceInt;
+
+                // 속도 증가: 일정 거리마다
+                if (currentDistanceInt % (int)speedIncreaseInterval == 0)
+                {
+                    speed += speedIncreaseAmount;
+                }
+            }
         }
     }
 
@@ -28,5 +52,8 @@ public class Player : MonoBehaviour
         isMoving = false;
         animController.PlayIdleAnim();
         transform.position = PlayerPos.transform.position;
+        speed = 7f; // 속도를 초기값으로 재설정
+        distanceTraveled = 0f;
+        lastScoreDistance = 0;
     }
 }

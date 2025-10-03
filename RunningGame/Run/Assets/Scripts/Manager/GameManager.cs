@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        UIManager.uiManager.UpdateHighScore();
     }
 
     // Update is called once per frame
@@ -40,7 +40,14 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //PlayerPrefs로 가장 높은 점수 저장
-        PlayerPrefs.SetInt("HighScore", Mathf.Max(score, PlayerPrefs.GetInt("HighScore", 0)));
+        // 현재 점수가 최고 점수보다 높으면 갱신
+        // PlayerPrefs가 없는 경우 HighScore는 UI가 표시되지 않음
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            UIManager.uiManager.UpdateHighScore();
+        }
 
         ResetGame();
     }
@@ -51,5 +58,11 @@ public class GameManager : MonoBehaviour
         player.ResetPosition();
         UIManager.uiManager.SetRestartBtn();
         bGController.ResetPosition();
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        UIManager.uiManager.UpdateScore();
     }
 }

@@ -23,6 +23,7 @@ public class PLAnimController : MonoBehaviour
         animator.SetBool("Run", false);
         animator.SetBool("Duck", false);
         currentHealth = maxHealth;
+        UIManager.uiManager.UpdateHearts(currentHealth);
     }
 
     public void PlayRunAnim()
