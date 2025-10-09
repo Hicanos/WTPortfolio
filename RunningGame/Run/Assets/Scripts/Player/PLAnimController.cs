@@ -34,6 +34,7 @@ public class PLAnimController : MonoBehaviour
     private void PlayHit()
     {
         animator.SetTrigger("Hit");
+        SoundManager.soundManager.SfxStart(2); // 충돌 효과음 재생
     }
 
     public void StopRun()
@@ -44,6 +45,7 @@ public class PLAnimController : MonoBehaviour
     public void PlayJump()
     {
         animator.SetTrigger("Jump");
+        SoundManager.soundManager.SfxStart(1); // 점프 효과음 재생
     }
 
     // 불리언 파라미터로 숙이기 애니메이션 제어

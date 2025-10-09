@@ -22,15 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Jump2",
-                    "type": "Button",
-                    "id": "0880179b-d71c-4449-91ac-6bcae975e4d5",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -47,23 +38,23 @@
                 },
                 {
                     "name": "",
+                    "id": "c5911fa6-8a49-497f-8bca-1e7bc45ffbfe",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ca147069-f56d-4207-b2cb-7ed51c1c9163",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "Hold(duration=0.01,pressPoint=0.01)",
                     "processors": "",
                     "groups": ";PC",
                     "action": "Duck",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f8b4bd1c-1ff9-4c10-822c-d4e69f745d1d",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";PC",
-                    "action": "Jump2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

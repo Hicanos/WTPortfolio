@@ -8,7 +8,6 @@ public class PLJump : MonoBehaviour
     private PLAnimController animController; // Img의 애니메이션 컨트롤러
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private InputActionReference jumpAction;
-    [SerializeField] private InputActionReference jumpAction2;
     [SerializeField] private InputActionReference duckAction;
     [SerializeField] private LayerMask groundLayer; // 바닥 레이어
     [SerializeField] private float groundCheckDistance = 0.1f; // 바닥 체크 거리
@@ -32,7 +31,7 @@ public class PLJump : MonoBehaviour
 
     private void OnEnable()
     {
-        if (jumpAction != null || jumpAction2 != null)
+        if (jumpAction != null)
         {
             Debug.Log("OnEnable 호출됨");
             jumpAction.action.performed += OnJumpAction;
@@ -48,7 +47,7 @@ public class PLJump : MonoBehaviour
 
     private void OnDisable()
     {
-        if (jumpAction != null || jumpAction2 != null)
+        if (jumpAction != null)
         {
             Debug.Log("OnDisable 호출됨");
             jumpAction.action.performed -= OnJumpAction;

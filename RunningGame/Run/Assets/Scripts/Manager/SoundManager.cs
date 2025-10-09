@@ -1,16 +1,40 @@
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// 소리 관리 매니저
+/// </summary>
 public class SoundManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static SoundManager soundManager;
+
+    [SerializeField] private AudioClip[] SfxClip; // 효과음 클립 배열
+    [SerializeField] private AudioSource AudioSource; // 오디오 소스
+    //[SerializeField] private AudioClip BgmClip; // 배경음악 클립
+
+    public void Awake()
     {
-        
+        if (soundManager == null)
+        {
+            soundManager = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        if(AudioSource == null)
+            AudioSource = GetComponent<AudioSource>();
+    }
+
+    public void SfxStart(int index)
+    {
+        // 효과음재생(외부에서 인덱스 지정, 배열로 관리)
+        // 0 선택 1 점프 2 충돌 3 게임오버
+        AudioClip sfx = SfxClip[index];
+        AudioSource.PlayOneShot(sfx);
     }
 }

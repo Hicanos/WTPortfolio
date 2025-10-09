@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        SoundManager.soundManager.SfxStart(0); // 선택 효과음 재생
         player.SetGameStart();
     }
 
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", highScore);
             UIManager.uiManager.UpdateHighScore();
         }
+
+        SoundManager.soundManager.SfxStart(3); // 게임오버 효과음 재생
 
         ResetGame();
     }
