@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int score; //현재 점수   
     public int highScore; //최고 점수
-    [SerializeField] private Player player;
+    public Player player;
+    public EnemySpawner enemySpawner;
     [SerializeField] private BGController bGController;
 
     private void Awake()
@@ -24,12 +25,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UIManager.uiManager.UpdateHighScore();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void StartGame()
