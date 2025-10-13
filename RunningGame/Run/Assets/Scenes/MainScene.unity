@@ -2386,7 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c711b4c6ca32c0043afd9e91039cdaea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
+  enemyPrefabs:
   - {fileID: 4537700699567775255, guid: 3f64dd5c0b63e1243bd180f34a929cf9, type: 3}
   - {fileID: 6147782758126092399, guid: 2ac965416c93c484b8c92eeefe248567, type: 3}
   - {fileID: 6861045454722006362, guid: e1b0d522cc5af4a428d3bcf36d31d730, type: 3}
@@ -3533,12 +3533,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 8
   jumpAction: {fileID: -329820918787624113, guid: 700bad60d5c34b44ea6e9c40dce45243, type: 3}
-  jumpAction2: {fileID: -3987516073358105159, guid: 700bad60d5c34b44ea6e9c40dce45243, type: 3}
   duckAction: {fileID: -7696066149820123024, guid: 700bad60d5c34b44ea6e9c40dce45243, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundCheckDistance: 0.08
+  fallMultiplier: 2.5
+  fastFallMultiplier: 6
 --- !u!1 &1907675884
 GameObject:
   m_ObjectHideFlags: 0

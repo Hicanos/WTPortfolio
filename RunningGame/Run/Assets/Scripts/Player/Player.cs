@@ -14,10 +14,13 @@ public class Player : MonoBehaviour
     private float speedIncreaseInterval = 100f; // 속도 증가 간격(거리)
     private float speedIncreaseAmount = 0.5f;  // 속도 증가량
 
-    // 에너미 소환 1회만 체크용
-    private bool enemySpawned0 = false;
-    private bool enemySpawned1 = false;
-    private bool enemySpawned2 = false;
+    // 에너미 연속 소환 방지용
+    private int lastLadybugSpawnScore = -1000;
+    private int lastBeeSpawnScore = -1000;
+    private int lastSawSpawnScore = -1000;
+    private int ladybugSpawnInterval = 30; // 최소 점수 간격
+    private int beeSpawnInterval = 50;
+    private int sawSpawnInterval = 70;
 
     public void SetGameStart()
     {
@@ -26,9 +29,9 @@ public class Player : MonoBehaviour
         distanceTraveled = 0f;
         lastScoreDistance = 0;
         speed = 7f;
-        enemySpawned0 = false;
-        enemySpawned1 = false;
-        enemySpawned2 = false;
+        lastLadybugSpawnScore = -1000;
+        lastBeeSpawnScore = -1000;
+        lastSawSpawnScore = -1000;
     }
 
     private void Update()
@@ -46,21 +49,24 @@ public class Player : MonoBehaviour
                 GameManager.Instance.AddScore(addScore);
                 lastScoreDistance = currentDistanceInt;
 
-                // 에너미 소환 (각 타입별 1회만)
-                if (GameManager.Instance.score <= 300 && !enemySpawned0)
+                int score = GameManager.Instance.score;
+                // 무당벌레: 항상 소환
+                if (score - lastLadybugSpawnScore >= ladybugSpawnInterval)
                 {
-                    GameManager.Instance.enemySpawner.SpawnEnemy(0); // 무당벌레만 소환
-                    enemySpawned0 = true;
+                    GameManager.Instance.enemySpawner.SpawnEnemy(0);
+                    lastLadybugSpawnScore = score;
                 }
-                else if (GameManager.Instance.score > 300 && GameManager.Instance.score <= 600 && !enemySpawned1)
+                // 벌: 300점 이상부터 소환
+                if (score >= 300 && score - lastBeeSpawnScore >= beeSpawnInterval)
                 {
                     GameManager.Instance.enemySpawner.SpawnEnemy(1);
-                    enemySpawned1 = true;
+                    lastBeeSpawnScore = score;
                 }
-                else if (GameManager.Instance.score > 600 && !enemySpawned2)
+                // 톱: 600점 이상부터 소환
+                if (score >= 600 && score - lastSawSpawnScore >= sawSpawnInterval)
                 {
                     GameManager.Instance.enemySpawner.SpawnEnemy(2);
-                    enemySpawned2 = true;
+                    lastSawSpawnScore = score;
                 }
 
                 // 속도 증가: 일정 거리마다
@@ -80,5 +86,8 @@ public class Player : MonoBehaviour
         speed = 7f; // 속도를 초기값으로 재설정
         distanceTraveled = 0f;
         lastScoreDistance = 0;
+        lastLadybugSpawnScore = -1000;
+        lastBeeSpawnScore = -1000;
+        lastSawSpawnScore = -1000;
     }
 }

@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         player.ResetPosition();
         UIManager.uiManager.SetRestartBtn();
         bGController.ResetPosition();
+        enemySpawner.ResetAllEnemies();
     }
 
     public void AddScore(int amount)
