@@ -90,4 +90,5 @@ public class Player : MonoBehaviour
         lastBeeSpawnScore = -1000;
         lastSawSpawnScore = -1000;
     }
+
 }

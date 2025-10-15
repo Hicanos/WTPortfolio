@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // 0: 무당벌레 1: 벌 2: 톱
     private List<GameObject>[] enemyPools;
-    private int[] poolSizes = new int[] { 4, 2, 2 }; // 무당벌레 최대 6, 벌/톱 2개씩(여유)
+    private int[] poolSizes = new int[] { 6, 2, 2 }; // 무당벌레 최대 6, 벌/톱 2개씩(여유)
 
     private void Awake()
     {

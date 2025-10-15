@@ -24,9 +24,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // EnemySpawner의 소환 규칙을 그대로 활용하여 재소환
-            gameObject.SetActive(false); // 풀로 반환
-            GameManager.Instance.enemySpawner.SpawnEnemy(enemyIndex);
+            gameObject.SetActive(false); // BG와 충돌 시 비활성화(풀로 반환)
         }
+        // Player와 충돌 시 아무것도 하지 않음 (소환/재소환은 Player.cs에서만 관리)
     }
 }

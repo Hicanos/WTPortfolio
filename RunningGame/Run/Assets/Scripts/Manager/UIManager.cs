@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,8 +9,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text highScoreText;
     [SerializeField] private GameManager gameManager;
 
+    [SerializeField] private InputActionReference ExitAction; // 게임 종료 버튼 활성화(Esc)
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject resetBtn;
+    [SerializeField] private GameObject exitBtn;
+    [SerializeField] private GameObject resumeBtn;
     [SerializeField] private GameObject highScoreObj;
 
     public static UIManager uiManager;
@@ -32,11 +36,15 @@ public class UIManager : MonoBehaviour
     {
         startBtn.SetActive(true);
         resetBtn.SetActive(false);
+        exitBtn.SetActive(false);
+        resumeBtn.SetActive(false);
     }
 
     public void SetRestartBtn()
     {
         resetBtn.SetActive(true);
+        startBtn.SetActive(false);
+        exitBtn.SetActive(false);
     }
 
     public void StartBtn()
@@ -84,5 +92,45 @@ public class UIManager : MonoBehaviour
                 hearts[i].SetActive(false);
             }
         }
+    }
+
+    // Esc를 누르면 게임 일시 정지 및 재개, 종료&재시작버튼 활성화&비활성화
+    
+    private void OnEnable()
+    {
+        ExitAction.action.Enable();
+        ExitAction.action.performed += OnExit;
+    }
+    private void OnDisable()
+    {
+        ExitAction.action.performed -= OnExit;
+        ExitAction.action.Disable();
+    }
+
+    private void OnExit(InputAction.CallbackContext context)
+    {
+        if (Time.timeScale == 1) // 게임 진행 중
+        {
+            Time.timeScale = 0; // 일시 정지
+            exitBtn.SetActive(true);
+            resumeBtn.SetActive(true);
+        }
+        else // 게임 일시 정지 중
+        {
+            Time.timeScale = 1; // 재개
+            exitBtn.SetActive(false);
+            resumeBtn.SetActive(false);
+        }
+    }
+
+    public void ExitBtn()
+    {
+        Application.Quit();
+    }
+    public void ResumeBtn()
+    {
+        Time.timeScale = 1; // 재개
+        exitBtn.SetActive(false);
+        resumeBtn.SetActive(false);
     }
 }

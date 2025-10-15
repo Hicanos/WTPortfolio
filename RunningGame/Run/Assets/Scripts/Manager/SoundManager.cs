@@ -33,7 +33,7 @@ public class SoundManager : MonoBehaviour
     public void SfxStart(int index)
     {
         // 효과음재생(외부에서 인덱스 지정, 배열로 관리)
-        // 0 선택 1 점프 2 충돌 3 게임오버
+        // 0 선택 1 점프 2 충돌 3 게임오버 4 슬라이드
         AudioClip sfx = SfxClip[index];
         AudioSource.PlayOneShot(sfx);
     }

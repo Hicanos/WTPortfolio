@@ -52,6 +52,7 @@ public class PLAnimController : MonoBehaviour
     public void PlayDuck(bool isDucking)
     {
         animator.SetBool("Duck", isDucking);
+        SoundManager.soundManager?.SfxStart(4); // 슬라이드 효과음 재생
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

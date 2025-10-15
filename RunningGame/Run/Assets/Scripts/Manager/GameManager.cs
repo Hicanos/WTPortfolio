@@ -64,4 +64,15 @@ public class GameManager : MonoBehaviour
         score += amount;
         UIManager.uiManager.UpdateScore();
     }
+
+    // 프로그램 종료
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f; // 게임 일시정지
+    }
 }
