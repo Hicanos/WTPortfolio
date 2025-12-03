@@ -156,6 +156,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f18c6d95b8cfe841a07b9d52b7cab46, type: 3}
   - {fileID: 8300000, guid: 51c3aa3994881d34f91cbcf38e2b1113, type: 3}
   AudioSource: {fileID: 2998842}
+  BgmClip: {fileID: 8300000, guid: e3826004d68bbdc40a6a1b51d3cefc92, type: 3}
 --- !u!82 &2998842
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1318,6 +1319,7 @@ MonoBehaviour:
   exitBtn: {fileID: 1734625967}
   resumeBtn: {fileID: 151932200}
   highScoreObj: {fileID: 1780121700}
+  defaultCursor: {fileID: 2800000, guid: 4e27167c10937ad4b8d8059737ea282c, type: 3}
 --- !u!1 &426256054
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,9 @@ public class PLAnimController : MonoBehaviour
     {
         animator.SetBool("Run", false);
         animator.SetBool("Duck", false);
+        //트리거 리셋
+        animator.ResetTrigger("Jump");
+        animator.ResetTrigger("Hit");
         currentHealth = maxHealth;
         UIManager.uiManager.UpdateHearts(currentHealth);
     }

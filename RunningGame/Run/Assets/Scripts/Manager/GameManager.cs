@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UIManager.uiManager.UpdateHighScore();
+        SoundManager.soundManager.BgmStart(); // 배경음악 재생
     }
 
     public void StartGame()

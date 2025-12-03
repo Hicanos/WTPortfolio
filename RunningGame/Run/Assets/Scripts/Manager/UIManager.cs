@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject resumeBtn;
     [SerializeField] private GameObject highScoreObj;
 
+    [SerializeField] private Texture2D defaultCursor; // 기본 커서 이미지
+
     public static UIManager uiManager;
 
     private void Awake()
@@ -30,6 +32,13 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    // 커서 변경(게임 내에서, 기존 윈도우 커서가 아닌 게임 내 커서 이미지로 변경)
+    private void Start()
+    {
+        // 커서 이미지를 기본 커서 이미지로 설정
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
     public void SetStartBtn()
