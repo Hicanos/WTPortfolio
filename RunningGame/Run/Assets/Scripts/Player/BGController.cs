@@ -24,9 +24,6 @@ public class BGController : MonoBehaviour
         originalPos4 = new Vector3(61.44f, 0f, 0f);
     }
 
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("BackGround"))
@@ -34,6 +31,7 @@ public class BGController : MonoBehaviour
             Debug.Log("백그라운드 감지됨");
             collision.transform.position = new Vector3(collision.transform.position.x + 81.92f, 0, 0);
         }
+        // Enemy 관련 처리는 Enemy.cs에서 직접 처리하므로 여기서는 아무것도 하지 않음
     }
 
     public void ResetPosition()

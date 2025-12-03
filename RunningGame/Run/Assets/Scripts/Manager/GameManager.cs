@@ -5,7 +5,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int score; //현재 점수   
     public int highScore; //최고 점수
-    [SerializeField] private Player player;
+    public Player player;
+    public EnemySpawner enemySpawner;
+    [SerializeField] private BGController bGController;
 
     private void Awake()
     {
@@ -22,24 +24,56 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UIManager.uiManager.UpdateHighScore();
+        SoundManager.soundManager.BgmStart(); // 배경음악 재생
     }
 
     public void StartGame()
     {
+        SoundManager.soundManager.SfxStart(0); // 선택 효과음 재생
         player.SetGameStart();
     }
 
     public void GameOver()
     {
         //PlayerPrefs로 가장 높은 점수 저장
-        
-        PlayerPrefs.SetInt("HighScore", Mathf.Max(score, PlayerPrefs.GetInt("HighScore", 0)));
+        // 현재 점수가 최고 점수보다 높으면 갱신
+        // PlayerPrefs가 없는 경우 HighScore는 UI가 표시되지 않음
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            UIManager.uiManager.UpdateHighScore();
+        }
+
+        SoundManager.soundManager.SfxStart(3); // 게임오버 효과음 재생
+
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        score = 0;
+        player.ResetPosition();
+        UIManager.uiManager.SetRestartBtn();
+        bGController.ResetPosition();
+        enemySpawner.ResetAllEnemies();
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        UIManager.uiManager.UpdateScore();
+    }
+
+    // 프로그램 종료
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f; // 게임 일시정지
     }
 }
