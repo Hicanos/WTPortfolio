@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/9eb6f011-d749-45bc-aba3-483cacb32352
 
 # 💎3Match Game(제작 중) 
 > 👾모티브 게임: 👑로얄 매치(Royal Match)   
-> 🖥️개발 엔진: Unity 6000.2.14f1> 
+> 🖥️개발 엔진: Unity 6000.2.14f1   
 > 🎨이미지&BGM 등: Suno(BGM), Crack AI 이미지 생성(배경 이미지), 쟝아(X계정: @jyjyaa_)
 
 블록 3개를 연달아 연결해 파괴하는 3 매치 게임 중, 쉽게 접할 수 있는(그리고 접근 난이도가 낮은) Royal Match를 토대로 제작한 3Match 게임.
